@@ -2,11 +2,25 @@ FROM node:18-alpine
 
 WORKDIR /app
 
+# Copy root package files
 COPY package*.json ./
-RUN npm ci --omit=dev
 
+# Install root dependencies (skip dev)
+RUN npm install --production
+
+# Copy everything else
 COPY . .
 
-EXPOSE 3000
+# Build client app
+WORKDIR /app/client
+RUN npm install
+RUN npm run build
 
-CMD ["npm", "start"]
+# Back to root
+WORKDIR /app
+
+# Expose port 3001
+EXPOSE 3001
+
+# Start production server
+CMD ["node", "server-prod.js"]
