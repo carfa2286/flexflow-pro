@@ -985,6 +985,7 @@ cron.schedule('0 8 * * *', () => {
   // Aquí iría la lógica de envío de emails
 });
 
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`✅ Servidor corriendo en puerto ${PORT}`);
+  console.log(`📱 Accede desde cualquier dispositivo en la red`);
 });
