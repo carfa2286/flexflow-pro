@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#667eea" />
+    <meta name="description" content="FlexFlow Pro - Gestión inteligente de préstamos, gastos y finanzas personales" />
+
+    <!-- PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="FlexFlow Pro" />
+    <meta name="apple-mobile-web-app-splash-screen-image" content="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'><rect fill='%23667eea' width='1024' height='1024'/><text x='512' y='512' font-size='200' text-anchor='middle' fill='white'>💎</text></svg>" />
+
+    <meta name="msapplication-TileColor" content="#667eea" />
+    <meta name="msapplication-config" content="browserconfig.xml" />
+
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23667eea' width='100' height='100'/><text x='50' y='75' font-size='60' text-anchor='middle' fill='white'>💎</text></svg>" />
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%23667eea' width='180' height='180' rx='40'/><text x='90' y='135' font-size='90' text-anchor='middle' fill='white'>💎</text></svg>" />
+
+    <title>💎 FlexFlow Pro</title>
+  </head>
+  <body>
+    <noscript>Necesitas habilitar JavaScript para usar FlexFlow Pro.</noscript>
+    <div id="root"></div>
+
+    <script>
+      // Registrar Service Worker
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then((registration) => {
+            console.log('✅ Service Worker registrado:', registration);
+          })
+          .catch((error) => {
+            console.log('❌ Service Worker error:', error);
+          });
+      }
+
+      // Detectar si está instalado como PWA
+      let displayMode = 'browser';
+      if (navigator.standalone === true) {
+        displayMode = 'standalone';
+      } else if (window.matchMedia('(display-mode: standalone)').matches) {
+        displayMode = 'standalone';
+      }
+      console.log('📱 Modo de visualización:', displayMode);
+    </script>
+  </body>
+</html>
