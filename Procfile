@@ -1,1 +1,1 @@
-web: cd client && npm install && CI=false npm run build && cd .. && node server.js
+web: PORT=3000 node server.js
